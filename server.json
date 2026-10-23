@@ -1,0 +1,49 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.getmcpads/chatgpt-ads",
+  "title": "ChatGPT Ads",
+  "description": "ChatGPT Ads MCP server: 30 read tools, 28 opt-in preview-first writes.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.getmcpads.com/tools/chatgpt-ads",
+  "repository": {
+    "url": "https://github.com/get-mcp-ads/chatgpt-ads-mcp-server",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@getmcpads/chatgpt-ads-mcp-server",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "OPENAI_ADS_API_KEY",
+          "description": "Advertiser API key from Ads Manager settings. Scoped to one ad account. Keep it secret.",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "OPENAI_ADS_ACCOUNT_ID",
+          "description": "The adacct_ ID the key belongs to. The only account the server will use.",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "OPENAI_ADS_ENABLE_WRITES",
+          "description": "true exposes the write tools. Defaults to false. Writes preview before applying.",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "OPENAI_ADS_ENABLE_ACTIVATION",
+          "description": "true allows activation, which can spend budget. Requires writes. Defaults to false.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

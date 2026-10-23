@@ -1,0 +1,85 @@
+{
+  "name": "@getmcpads/chatgpt-ads-mcp-server",
+  "version": "1.0.0",
+  "mcpName": "com.getmcpads/chatgpt-ads",
+  "description": "ChatGPT Ads MCP server: 30 read tools, 28 opt-in preview-first writes.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "chatgpt-ads-mcp": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/cli.ts",
+    "doctor": "node scripts/doctor.mjs",
+    "start": "node dist/cli.js",
+    "test": "tsx --test test/*.test.mjs && npm run test:unit",
+    "test:unit": "vitest run",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build && node scripts/generate-catalog.mjs && npm test",
+    "catalog": "npm run build && node scripts/generate-catalog.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "server-card.json",
+    "server.json",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "chatgpt-ads",
+    "chatgpt",
+    "openai-ads",
+    "openai",
+    "ads-api",
+    "advertising",
+    "marketing-analytics",
+    "claude",
+    "cursor",
+    "ai-agent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/get-mcp-ads/chatgpt-ads-mcp-server.git"
+  },
+  "homepage": "https://www.getmcpads.com/tools/chatgpt-ads",
+  "bugs": {
+    "url": "https://github.com/get-mcp-ads/chatgpt-ads-mcp-server/issues"
+  },
+  "author": "Emmanuel, getmcpads (https://www.getmcpads.com)",
+  "publishConfig": {
+    "access": "public"
+  }
+}

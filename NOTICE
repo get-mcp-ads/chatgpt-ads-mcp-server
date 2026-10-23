@@ -1,0 +1,21 @@
+chatgpt-ads-mcp-server
+Copyright 2026 GetMCPAds
+
+This product includes software developed at GetMCPAds (https://www.getmcpads.com).
+
+An open-source Model Context Protocol server for the ChatGPT Ads Advertiser API.
+It is self-hosted and unaffiliated with OpenAI.
+
+src/openai-ads-contracts.json contains request schemas extracted from the
+public OpenAPI document that OpenAI publishes at
+https://developers.openai.com/ads/openapi.json.
+
+GetMCPAds also runs a managed gateway that covers ChatGPT Ads alongside
+Meta Ads, Google Ads, TikTok Ads, Pinterest Ads, X Ads, Google Analytics and
+Search Console, with hosted connections and cross-platform reporting:
+https://www.getmcpads.com
+
+---
+
+OpenAI and ChatGPT are trademarks of OpenAI. This project is not affiliated
+with, endorsed by, or sponsored by OpenAI.
