@@ -1,7 +1,6 @@
 # Changelog
 
-## 1.0.0 - 2026-10-23
-
+## 1.0.0 - 2026-10-23 - First standalone release
 - Create the first standalone server for the ChatGPT Ads Advertiser API, ported from the hosted getmcpads gateway at revision 3e1c2c8.
 - Expose 30 read tools, 28 write tools that are disabled by default, and one guide resource.
 - Read the account, campaigns, ad groups, ads, chat card creatives, performance insights with country, device and platform breakdowns, conversion setup and insights, product feeds, custom audiences, audit logs, spend limits and Bulk API jobs.

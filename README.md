@@ -27,15 +27,22 @@ Run locally with your own Advertiser API key and a client that supports stdio MC
 
 ## What's new
 
+<!-- release-history:start -->
 **[v1.0.0: First standalone release](https://github.com/get-mcp-ads/chatgpt-ads-mcp-server/releases/tag/v1.0.0) · October 23, 2026**
 
-- Port the 58 ChatGPT Ads tools of the hosted gateway: account, campaigns, ad groups, ads, creatives, insights, conversions, product feeds, custom audiences, audit logs, spend limits and Bulk API jobs.
-- Pin the native request schemas to OpenAI's public OpenAPI document and validate every request against them before it is sent.
-- Scope every call to one configured ad account and verify that the API key belongs to it.
-- Preview every write and apply only the approved preview. Creations are paused and activation has its own switch.
-- Send requests only to `api.ads.openai.com`, refuse redirects and never retry automatically.
+- Create the first standalone server for the ChatGPT Ads Advertiser API, ported from the hosted getmcpads gateway at revision 3e1c2c8.
+- Expose 30 read tools, 28 write tools that are disabled by default, and one guide resource.
+- Read the account, campaigns, ad groups, ads, chat card creatives, performance insights with country, device and platform breakdowns, conversion setup and insights, product feeds, custom audiences, audit logs, spend limits and Bulk API jobs.
+- Pin the native request schemas to the public OpenAPI document (sha256 `266e7e19`), with a generator that refreshes them from a saved copy.
+- Scope every call to the account in `OPENAI_ADS_ACCOUNT_ID` and verify on the first request that the API key belongs to it.
+- Preview every write and apply only the exact saved preview after confirmation. Creations are paused, activation needs its own flag, and nothing is retried automatically.
+- Send requests only to `api.ads.openai.com`, refuse redirects, bound response size and time, and redact the key from provider text.
+- Require Node.js 22.23.4, 24.22.1, 26.12.1 or newer within each line, and warn on stderr when the runtime lacks the October 2026 security fixes.
 
-[Full changelog](CHANGELOG.md) · [Source synchronization details](SOURCE_SYNC.md) · [All releases](https://github.com/get-mcp-ads/chatgpt-ads-mcp-server/releases)
+[Full changelog](CHANGELOG.md) · [All releases](https://github.com/get-mcp-ads/chatgpt-ads-mcp-server/releases)
+<!-- release-history:end -->
+
+Source synchronization: [SOURCE_SYNC.md](SOURCE_SYNC.md).
 
 ### Upgrade notes
 

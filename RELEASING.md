@@ -19,3 +19,5 @@ Releases are driven by a version tag. The `release.yml` workflow publishes npm, 
    - publishes `com.getmcpads/chatgpt-ads` to the MCP Registry, authenticated by the getmcpads.com DNS key.
 
 Each step skips when its target already holds the version, so a partial release can be resumed with **Run workflow** and the existing tag. npm must list this repository and `release.yml` as a trusted publisher, and the repository needs the `MCP_DNS_PRIVATE_KEY` secret.
+
+Before tagging, add the release to CHANGELOG.md as `## X.Y.Z - YYYY-MM-DD - Title`, then run `npm run release-history`. The README shows every release from the changelog, and the test suite fails when it falls behind.

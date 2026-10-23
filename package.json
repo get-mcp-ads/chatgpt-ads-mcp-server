@@ -26,7 +26,8 @@
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run typecheck && npm run build && node scripts/generate-catalog.mjs && npm test",
-    "catalog": "npm run build && node scripts/generate-catalog.mjs"
+    "catalog": "npm run build && node scripts/generate-catalog.mjs",
+    "release-history": "node scripts/release-history.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
