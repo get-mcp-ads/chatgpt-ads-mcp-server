@@ -12,7 +12,7 @@ import { registerOpenAIAdsReads } from "./tools.js";
 import { registerOpenAINative } from "./native-tools.js";
 import type { Collector, ToolContext } from "./context.js";
 
-export const PACKAGE_VERSION = "1.0.0";
+export const PACKAGE_VERSION = "1.0.1";
 
 export function createServer(input: OpenAIAdsConfig): McpServer {
   const config = validateConfig(input);

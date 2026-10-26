@@ -3,7 +3,7 @@
   "name": "com.getmcpads/chatgpt-ads",
   "title": "ChatGPT Ads",
   "description": "ChatGPT Ads MCP server: 30 read tools, 28 opt-in preview-first writes.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://www.getmcpads.com/tools/chatgpt-ads",
   "repository": {
     "url": "https://github.com/get-mcp-ads/chatgpt-ads-mcp-server",
@@ -14,7 +14,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@getmcpads/chatgpt-ads-mcp-server",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "transport": {
         "type": "stdio"
       },

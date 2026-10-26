@@ -10,8 +10,8 @@ export const ACCOUNT_ID_PATTERN = /^adacct_[A-Za-z0-9_-]{1,128}$/;
 const schema = z.object({
   apiKey: z.string().min(1).max(4096).regex(/^\S+$/),
   accountId: z.string().regex(ACCOUNT_ID_PATTERN),
-  enableWrites: z.boolean().default(false),
-  enableActivation: z.boolean().default(false),
+  enableWrites: z.boolean().prefault(false),
+  enableActivation: z.boolean().prefault(false),
 }).strict();
 
 export type OpenAIAdsConfig = z.infer<typeof schema>;

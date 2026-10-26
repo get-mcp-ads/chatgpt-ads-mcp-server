@@ -22,9 +22,9 @@ export const OPENAI_ADS_BREAKDOWNS = ["country", "device", "platform"] as const;
 export type OpenAIAdsBreakdown = (typeof OPENAI_ADS_BREAKDOWNS)[number];
 export const OPENAI_ADS_DELIVERY_METRICS = ["impressions", "clicks", "spend", "ctr", "cpc", "cpm"] as const;
 export const openaiAdsAttributionSchema = z.object({
-  attribution_window_days: z.union([z.literal(7), z.literal(14), z.literal(30)]).default(30),
-  view_through_attribution_window_days: z.union([z.literal(0), z.literal(1)]).default(1),
-  attribution_time_basis: z.enum(["ad_event_time", "conversion_time"]).default("ad_event_time"),
+  attribution_window_days: z.union([z.literal(7), z.literal(14), z.literal(30)]).prefault(30),
+  view_through_attribution_window_days: z.union([z.literal(0), z.literal(1)]).prefault(1),
+  attribution_time_basis: z.enum(["ad_event_time", "conversion_time"]).prefault("ad_event_time"),
 }).strict();
 export type OpenAIAdsAttributionInput = z.input<typeof openaiAdsAttributionSchema>;
 export const OPENAI_ADS_ATTRIBUTION = "Goal conversions include click-through and view-through attribution: 30-day click / 1-day view, grouped by ad interaction date. Purchase sales include attributed order_created events. Results are not deduplicated against other providers.";

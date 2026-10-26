@@ -16,7 +16,7 @@ import { accountParam as account, type Collector, type ToolContext } from "./con
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const approval = {
   requestId: z.string().uuid().describe("A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."),
-  confirm: z.boolean().default(false).describe("false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."),
+  confirm: z.boolean().prefault(false).describe("false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."),
   confirmationToken: z.string().uuid().optional().describe("The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."),
 };
 const WRITE_NOTE = "Previews by default: call without confirm to receive a saved preview and confirmationToken, then repeat the identical call with confirm:true and that token once the person approves. Creations are always paused. Budgets and bids use integer account-currency micros. Nothing is retried automatically. See openai_ads_get_write_schema for nested fields.";
@@ -279,7 +279,7 @@ export function registerOpenAINative(c: Collector, ctx: ToolContext, write: bool
       adAccountId: account,
       [param]: z.string().regex(new RegExp(`^${prefix}_[A-Za-z0-9_-]{1,128}$`)).describe(`Native ${level.replace("_", " ")} ID (${prefix}_) in the configured account.`),
       name: z.string().trim().min(3).max(1000).describe("New name, 3 to 1,000 characters. The name is the only thing the call changes."),
-      confirm: z.boolean().default(false).describe("false returns a preview and changes nothing. true applies the rename after the person approved it."),
+      confirm: z.boolean().prefault(false).describe("false returns a preview and changes nothing. true applies the rename after the person approved it."),
     };
     c.tool(tool, `Rename one ChatGPT Ads ${level.replace("_", " ")}. The name is the only field that changes. Previews by default; confirm:true applies it once the person approves. Nothing is retried automatically.`, renameShape, handle(async raw => {
       const a = z.object(renameShape).strict().parse(raw) as Record<string, any>;
