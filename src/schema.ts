@@ -74,7 +74,7 @@ export function adsOperationShape(op: AdsOperation): Record<string, z.ZodTypeAny
   const query = Object.fromEntries(op.parameters.filter(p => p.in === "query").map(p => [p.name, p.required ? adsSchema(p.schema) : adsSchema(p.schema).optional()]));
   return {
     ...path,
-    ...(Object.keys(query).length ? { query: z.object(query).strict().default({}).describe("Documented native query parameters. Each call reads one page unless the tool says otherwise.") } : {}),
+    ...(Object.keys(query).length ? { query: z.object(query).strict().prefault({}).describe("Documented native query parameters. Each call reads one page unless the tool says otherwise.") } : {}),
     ...(op.body ? { body: adsSchema(op.body).describe("Exact pinned native JSON request body. Nested configuration objects replace their previous contents, so send the complete intended configuration. Money uses integer account-currency micros.") } : {}),
   };
 }

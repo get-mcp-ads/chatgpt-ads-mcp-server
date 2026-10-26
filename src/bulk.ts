@@ -13,18 +13,18 @@ import { z } from "zod";
 const text = z.string().min(3).max(1000).regex(/\S/), key = z.string().min(1).max(255).regex(/\S/), money = z.number().int().safe().min(1);
 const status = z.enum(["active", "paused", "archived"]);
 const common = { operation_id: key, type: z.string() };
-const campaignCreate = z.object({ name: text, max_budget_micros: money.min(1000000), billing_event_type: z.enum(["impression", "click"]).optional(), budget_type: z.enum(["daily", "lifetime"]).optional(), status: z.enum(["active", "paused"]).default("paused"), target_countries: z.array(z.string().regex(/^[A-Z]{2}$/)).optional(), location_ids: z.array(z.string().min(1)).max(2500).optional() }).strict();
+const campaignCreate = z.object({ name: text, max_budget_micros: money.min(1000000), billing_event_type: z.enum(["impression", "click"]).optional(), budget_type: z.enum(["daily", "lifetime"]).optional(), status: z.enum(["active", "paused"]).prefault("paused"), target_countries: z.array(z.string().regex(/^[A-Z]{2}$/)).optional(), location_ids: z.array(z.string().min(1)).max(2500).optional() }).strict();
 const campaignUpdate = z.object({ name: text.optional(), description: z.string().optional(), status: status.optional(), max_budget_micros: money.min(1000000).optional(), budget_type: z.enum(["daily", "lifetime"]).optional(), start_time: z.number().int().safe().optional(), end_time: z.number().int().safe().optional(), location_ids: z.array(z.string().min(1)).max(2500).optional() }).strict().refine(v => Object.keys(v).length > 0, "An update needs at least one field.");
 const groupFields = { context_hints: z.array(z.string()).max(2000).optional(), exclusion_hints: z.array(z.string()).max(2000).optional(), max_bid_micros: money.optional(), max_cpm_bid_micros: money.optional() };
-const groupCreate = z.object({ campaign_idempotency_key: key, name: text, ...groupFields, status: z.enum(["active", "paused"]).default("paused") }).strict().refine(v => !(v.max_bid_micros && v.max_cpm_bid_micros), "Choose only one bid field.");
+const groupCreate = z.object({ campaign_idempotency_key: key, name: text, ...groupFields, status: z.enum(["active", "paused"]).prefault("paused") }).strict().refine(v => !(v.max_bid_micros && v.max_cpm_bid_micros), "Choose only one bid field.");
 const groupUpdate = z.object({ name: text.optional(), description: z.string().optional(), status: status.optional(), ...groupFields }).strict().refine(v => Object.keys(v).length > 0 && !(v.max_bid_micros && v.max_cpm_bid_micros), "Use at least one update field and only one bid field.");
 const creative = { title: z.string().min(3).max(50).regex(/\S/), body: z.string().max(100), target_url: z.string().url().startsWith("https://").max(2048) };
-const adCreate = z.object({ campaign_idempotency_key: key, ad_group_idempotency_key: key, ...creative, source_image_url: z.string().url().startsWith("https://").max(2048), status: z.enum(["active", "paused"]).default("paused") }).strict();
+const adCreate = z.object({ campaign_idempotency_key: key, ad_group_idempotency_key: key, ...creative, source_image_url: z.string().url().startsWith("https://").max(2048), status: z.enum(["active", "paused"]).prefault("paused") }).strict();
 const adUpdate = z.object({ name: text.optional(), status: status.optional(), creative: z.object({ ...creative, file_id: z.string().min(1) }).strict().optional() }).strict().refine(v => Object.keys(v).length > 0, "An update needs at least one field.");
 
 export const adsBulkBody = z.object({
-  validate_only: z.boolean().default(true),
-  partial_failure: z.boolean().default(true),
+  validate_only: z.boolean().prefault(true),
+  partial_failure: z.boolean().prefault(true),
   operations: z.array(z.discriminatedUnion("type", [
     z.object({ ...common, type: z.literal("campaign.create"), idempotency_key: key, input: campaignCreate }).strict(),
     z.object({ ...common, type: z.literal("campaign.update"), target_resource_id: z.string().regex(/^cmpn_[A-Za-z0-9_-]{1,128}$/), input: campaignUpdate }).strict(),
@@ -58,5 +58,5 @@ export const adsBulkBody = z.object({
   if (new TextEncoder().encode(JSON.stringify(body)).byteLength > 16 * 1024 * 1024) ctx.addIssue({ code: "custom", message: "Bulk body exceeds 16 MiB." });
 });
 export const adsBulkJobId = z.string().regex(/^blkmtnjob_[A-Za-z0-9_-]{1,128}$/).describe("Native bulk job ID, blkmtnjob_ followed by its identifier, returned when the job was submitted.");
-export const adsBulkResultsQuery = z.object({ limit: z.number().int().min(1).max(100).default(100), after: key.optional() }).strict().default({}).describe("Page size from 1 to 100 and, for later pages, the last operation_id of the previous page as after.");
+export const adsBulkResultsQuery = z.object({ limit: z.number().int().min(1).max(100).prefault(100), after: key.optional() }).strict().prefault({}).describe("Page size from 1 to 100 and, for later pages, the last operation_id of the previous page as after.");
 export type AdsBulkBody = z.infer<typeof adsBulkBody>;

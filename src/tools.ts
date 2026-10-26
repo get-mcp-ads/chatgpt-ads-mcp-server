@@ -23,12 +23,12 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v => {
 }, "Use a real calendar date in YYYY-MM-DD format.");
 const include = z.array(z.literal("serving_issues")).max(1).optional().describe("Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.");
 const pagination = {
-  limit: z.number().int().min(1).max(500).default(100).describe("Page size, 1 to 500. Defaults to 100."),
+  limit: z.number().int().min(1).max(500).prefault(100).describe("Page size, 1 to 500. Defaults to 100."),
   after: z.string().min(1).max(4096).optional().describe("Next-page cursor: the previous page's last_id, only when has_more is true."),
   before: z.string().min(1).max(4096).optional().describe("Previous-page cursor: a first_id returned by a later page."),
   name: z.string().min(3).max(1000).optional().describe("Return only entities whose name matches this text, 3 to 1,000 characters."),
   include,
-  order: z.enum(["asc", "desc"]).default("desc").describe("Sort by creation time. Defaults to desc, newest first."),
+  order: z.enum(["asc", "desc"]).prefault("desc").describe("Sort by creation time. Defaults to desc, newest first."),
 };
 
 /** Native signed image links can already be stale in a list response. Their expiry is never extended. */
@@ -60,7 +60,7 @@ export function registerOpenAIAdsReads(collector: Collector, ctx: ToolContext): 
     adAccountId: accountParam,
     adGroupId: adGroupId.optional().describe("Optional ad group (adgrp_) to list. Omit to list ads across the account."),
     adIds: z.array(adId).min(1).max(60).optional().describe("Up to 60 exact ad IDs to read. Cannot be combined with adGroupId or after."),
-    limit: z.number().int().min(1).max(20).default(20).describe("Ads per page, 1 to 20. Defaults to 20."),
+    limit: z.number().int().min(1).max(20).prefault(20).describe("Ads per page, 1 to 20. Defaults to 20."),
     after: z.string().min(1).max(4096).optional().describe("The nextCursor of the previous page, only when hasMore is true."),
   }, async a => {
     if (a.adIds && (a.adGroupId || a.after)) throw new OpenAIAdsError(400, "INVALID_FILTER", "Use exact adIds or a paginated ad group or account listing, not both.");
@@ -91,10 +91,10 @@ export function registerOpenAIAdsReads(collector: Collector, ctx: ToolContext): 
     adAccountId: accountParam,
     since: isoDate.describe("First day of the report, YYYY-MM-DD, in the account's time zone. Inclusive."),
     until: isoDate.describe("Last day of the report, YYYY-MM-DD, in the account's time zone. Inclusive. At most 365 days after since."),
-    level: z.enum(OPENAI_ADS_LEVELS).default("campaign").describe("Aggregation level: ad_account, campaign, ad_group or ad. Defaults to campaign."),
-    metrics: z.array(z.enum(OPENAI_ADS_METRICS)).min(1).max(OPENAI_ADS_METRICS.length).default(["spend", "impressions", "clicks"]).describe("Native metrics to return. Defaults to spend, impressions and clicks."),
-    timeGranularity: z.enum(["daily", "none"]).default("daily").describe("daily returns one row per day; none returns period totals."),
-    maxRows: z.number().int().min(1).max(10000).default(10000).describe("Maximum rows to collect across pages, 1 to 10,000. truncated is true when more rows exist."),
+    level: z.enum(OPENAI_ADS_LEVELS).prefault("campaign").describe("Aggregation level: ad_account, campaign, ad_group or ad. Defaults to campaign."),
+    metrics: z.array(z.enum(OPENAI_ADS_METRICS)).min(1).max(OPENAI_ADS_METRICS.length).prefault(["spend", "impressions", "clicks"]).describe("Native metrics to return. Defaults to spend, impressions and clicks."),
+    timeGranularity: z.enum(["daily", "none"]).prefault("daily").describe("daily returns one row per day; none returns period totals."),
+    maxRows: z.number().int().min(1).max(10000).prefault(10000).describe("Maximum rows to collect across pages, 1 to 10,000. truncated is true when more rows exist."),
     breakdown: z.enum(OPENAI_ADS_BREAKDOWNS).optional().describe("One delivery breakdown per request: country, device or platform. Supports impressions, clicks, spend, ctr, cpc and cpm. Omit for entity totals."),
     attribution: openaiAdsAttributionSchema.optional().describe("Report attribution only: attribution_window_days 7, 14 or 30, view_through_attribution_window_days 0 or 1, attribution_time_basis ad_event_time or conversion_time. Campaign goals are unchanged."),
   }, a => client.insights(a as OpenAIAdsReportQuery));

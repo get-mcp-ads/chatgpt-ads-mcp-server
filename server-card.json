@@ -2,7 +2,7 @@
   "serverInfo": {
     "name": "@getmcpads/chatgpt-ads-mcp-server",
     "title": "ChatGPT Ads MCP server: 30 read tools, 28 opt-in preview-first writes.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "websiteUrl": "https://www.getmcpads.com/tools/chatgpt-ads",
     "icons": [
       {
@@ -28,8 +28,8 @@
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -39,7 +39,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -64,8 +64,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -90,54 +90,54 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "limit": {
+            "description": "Page size, 1 to 500. Defaults to 100.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 500,
-            "default": 100,
-            "description": "Page size, 1 to 500. Defaults to 100."
+            "maximum": 500
           },
           "after": {
+            "description": "Next-page cursor: the previous page's last_id, only when has_more is true.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Next-page cursor: the previous page's last_id, only when has_more is true."
+            "maxLength": 4096
           },
           "before": {
+            "description": "Previous-page cursor: a first_id returned by a later page.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Previous-page cursor: a first_id returned by a later page."
+            "maxLength": 4096
           },
           "name": {
+            "description": "Return only entities whose name matches this text, 3 to 1,000 characters.",
             "type": "string",
             "minLength": 3,
-            "maxLength": 1000,
-            "description": "Return only entities whose name matches this text, 3 to 1,000 characters."
+            "maxLength": 1000
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           },
           "order": {
+            "description": "Sort by creation time. Defaults to desc, newest first.",
+            "default": "desc",
             "type": "string",
             "enum": [
               "asc",
               "desc"
-            ],
-            "default": "desc",
-            "description": "Sort by creation time. Defaults to desc, newest first."
+            ]
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -147,7 +147,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -172,8 +172,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -203,21 +203,21 @@
             "description": "Native campaign ID (cmpn_) in the configured account."
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           }
         },
         "required": [
           "adAccountId",
           "campaignId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -227,7 +227,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -252,8 +252,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -283,55 +283,55 @@
             "description": "Native campaign ID (cmpn_) in the configured account."
           },
           "limit": {
+            "description": "Page size, 1 to 500. Defaults to 100.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 500,
-            "default": 100,
-            "description": "Page size, 1 to 500. Defaults to 100."
+            "maximum": 500
           },
           "after": {
+            "description": "Next-page cursor: the previous page's last_id, only when has_more is true.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Next-page cursor: the previous page's last_id, only when has_more is true."
+            "maxLength": 4096
           },
           "before": {
+            "description": "Previous-page cursor: a first_id returned by a later page.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Previous-page cursor: a first_id returned by a later page."
+            "maxLength": 4096
           },
           "name": {
+            "description": "Return only entities whose name matches this text, 3 to 1,000 characters.",
             "type": "string",
             "minLength": 3,
-            "maxLength": 1000,
-            "description": "Return only entities whose name matches this text, 3 to 1,000 characters."
+            "maxLength": 1000
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           },
           "order": {
+            "description": "Sort by creation time. Defaults to desc, newest first.",
+            "default": "desc",
             "type": "string",
             "enum": [
               "asc",
               "desc"
-            ],
-            "default": "desc",
-            "description": "Sort by creation time. Defaults to desc, newest first."
+            ]
           }
         },
         "required": [
           "adAccountId",
           "campaignId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -341,7 +341,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -366,8 +366,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -397,21 +397,21 @@
             "description": "Native ad group ID (adgrp_) in the configured account."
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           }
         },
         "required": [
           "adAccountId",
           "adGroupId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -421,7 +421,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -446,8 +446,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -477,55 +477,55 @@
             "description": "Native ad group ID (adgrp_) in the configured account."
           },
           "limit": {
+            "description": "Page size, 1 to 500. Defaults to 100.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 500,
-            "default": 100,
-            "description": "Page size, 1 to 500. Defaults to 100."
+            "maximum": 500
           },
           "after": {
+            "description": "Next-page cursor: the previous page's last_id, only when has_more is true.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Next-page cursor: the previous page's last_id, only when has_more is true."
+            "maxLength": 4096
           },
           "before": {
+            "description": "Previous-page cursor: a first_id returned by a later page.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "Previous-page cursor: a first_id returned by a later page."
+            "maxLength": 4096
           },
           "name": {
+            "description": "Return only entities whose name matches this text, 3 to 1,000 characters.",
             "type": "string",
             "minLength": 3,
-            "maxLength": 1000,
-            "description": "Return only entities whose name matches this text, 3 to 1,000 characters."
+            "maxLength": 1000
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           },
           "order": {
+            "description": "Sort by creation time. Defaults to desc, newest first.",
+            "default": "desc",
             "type": "string",
             "enum": [
               "asc",
               "desc"
-            ],
-            "default": "desc",
-            "description": "Sort by creation time. Defaults to desc, newest first."
+            ]
           }
         },
         "required": [
           "adAccountId",
           "adGroupId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -535,7 +535,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -560,8 +560,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -591,21 +591,21 @@
             "description": "Native ad ID (ad_) in the configured account."
           },
           "include": {
+            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue.",
+            "maxItems": 1,
             "type": "array",
             "items": {
               "type": "string",
               "const": "serving_issues"
-            },
-            "maxItems": 1,
-            "description": "Add serving_issues to receive native reasons why this entity cannot serve. A paused state is intentional, not an issue."
+            }
           }
         },
         "required": [
           "adAccountId",
           "adId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -615,7 +615,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -640,8 +640,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -666,40 +666,40 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "adGroupId": {
+            "description": "Optional ad group (adgrp_) to list. Omit to list ads across the account.",
             "type": "string",
-            "pattern": "^adgrp_[A-Za-z0-9_-]{1,128}$",
-            "description": "Optional ad group (adgrp_) to list. Omit to list ads across the account."
+            "pattern": "^adgrp_[A-Za-z0-9_-]{1,128}$"
           },
           "adIds": {
+            "description": "Up to 60 exact ad IDs to read. Cannot be combined with adGroupId or after.",
+            "minItems": 1,
+            "maxItems": 60,
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^ad_[A-Za-z0-9_-]{1,128}$",
               "description": "Native ad ID (ad_) in the configured account."
-            },
-            "minItems": 1,
-            "maxItems": 60,
-            "description": "Up to 60 exact ad IDs to read. Cannot be combined with adGroupId or after."
+            }
           },
           "limit": {
+            "description": "Ads per page, 1 to 20. Defaults to 20.",
+            "default": 20,
             "type": "integer",
             "minimum": 1,
-            "maximum": 20,
-            "default": 20,
-            "description": "Ads per page, 1 to 20. Defaults to 20."
+            "maximum": 20
           },
           "after": {
+            "description": "The nextCursor of the previous page, only when hasMore is true.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 4096,
-            "description": "The nextCursor of the previous page, only when hasMore is true."
+            "maxLength": 4096
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -709,7 +709,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -734,8 +734,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -765,21 +765,30 @@
             "description": "First day of the report, YYYY-MM-DD, in the account's time zone. Inclusive."
           },
           "until": {
-            "$ref": "#/properties/since",
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
             "description": "Last day of the report, YYYY-MM-DD, in the account's time zone. Inclusive. At most 365 days after since."
           },
           "level": {
+            "description": "Aggregation level: ad_account, campaign, ad_group or ad. Defaults to campaign.",
+            "default": "campaign",
             "type": "string",
             "enum": [
               "ad_account",
               "campaign",
               "ad_group",
               "ad"
-            ],
-            "default": "campaign",
-            "description": "Aggregation level: ad_account, campaign, ad_group or ad. Defaults to campaign."
+            ]
           },
           "metrics": {
+            "description": "Native metrics to return. Defaults to spend, impressions and clicks.",
+            "default": [
+              "spend",
+              "impressions",
+              "clicks"
+            ],
+            "minItems": 1,
+            "maxItems": 11,
             "type": "array",
             "items": {
               "type": "string",
@@ -796,72 +805,77 @@
                 "order_created_attributed_sales",
                 "order_created_roas"
               ]
-            },
-            "minItems": 1,
-            "maxItems": 11,
-            "default": [
-              "spend",
-              "impressions",
-              "clicks"
-            ],
-            "description": "Native metrics to return. Defaults to spend, impressions and clicks."
+            }
           },
           "timeGranularity": {
+            "description": "daily returns one row per day; none returns period totals.",
+            "default": "daily",
             "type": "string",
             "enum": [
               "daily",
               "none"
-            ],
-            "default": "daily",
-            "description": "daily returns one row per day; none returns period totals."
+            ]
           },
           "maxRows": {
+            "description": "Maximum rows to collect across pages, 1 to 10,000. truncated is true when more rows exist.",
+            "default": 10000,
             "type": "integer",
             "minimum": 1,
-            "maximum": 10000,
-            "default": 10000,
-            "description": "Maximum rows to collect across pages, 1 to 10,000. truncated is true when more rows exist."
+            "maximum": 10000
           },
           "breakdown": {
+            "description": "One delivery breakdown per request: country, device or platform. Supports impressions, clicks, spend, ctr, cpc and cpm. Omit for entity totals.",
             "type": "string",
             "enum": [
               "country",
               "device",
               "platform"
-            ],
-            "description": "One delivery breakdown per request: country, device or platform. Supports impressions, clicks, spend, ctr, cpc and cpm. Omit for entity totals."
+            ]
           },
           "attribution": {
+            "description": "Report attribution only: attribution_window_days 7, 14 or 30, view_through_attribution_window_days 0 or 1, attribution_time_basis ad_event_time or conversion_time. Campaign goals are unchanged.",
             "type": "object",
             "properties": {
               "attribution_window_days": {
-                "type": "number",
-                "enum": [
-                  7,
-                  14,
-                  30
-                ],
-                "default": 30
+                "default": 30,
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "const": 7
+                  },
+                  {
+                    "type": "number",
+                    "const": 14
+                  },
+                  {
+                    "type": "number",
+                    "const": 30
+                  }
+                ]
               },
               "view_through_attribution_window_days": {
-                "type": "number",
-                "enum": [
-                  0,
-                  1
-                ],
-                "default": 1
+                "default": 1,
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "const": 0
+                  },
+                  {
+                    "type": "number",
+                    "const": 1
+                  }
+                ]
               },
               "attribution_time_basis": {
+                "default": "ad_event_time",
                 "type": "string",
                 "enum": [
                   "ad_event_time",
                   "conversion_time"
-                ],
-                "default": "ad_event_time"
+                ]
               }
             },
-            "additionalProperties": false,
-            "description": "Report attribution only: attribution_window_days 7, 14 or 30, view_through_attribution_window_days 0 or 1, attribution_time_basis ad_event_time or conversion_time. Campaign goals are unchanged."
+            "additionalProperties": false
           }
         },
         "required": [
@@ -869,8 +883,8 @@
           "since",
           "until"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -880,7 +894,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -905,8 +919,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -931,6 +945,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "q": {
@@ -946,17 +962,14 @@
             "required": [
               "q"
             ],
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
-          "adAccountId",
-          "query"
+          "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -966,7 +979,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -991,8 +1004,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1017,6 +1030,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "limit": {
@@ -1031,10 +1046,15 @@
                 "type": "string"
               },
               "order": {
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "asc"
+                  },
+                  {
+                    "type": "string",
+                    "const": "desc"
+                  }
                 ]
               },
               "campaign_id": {
@@ -1064,16 +1084,14 @@
                 "maximum": 4102444800
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1083,7 +1101,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1108,8 +1126,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1137,8 +1155,8 @@
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1148,7 +1166,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1173,8 +1191,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1207,8 +1225,8 @@
           "adAccountId",
           "ad_id"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1218,7 +1236,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1243,8 +1261,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1269,6 +1287,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "limit": {
@@ -1283,23 +1303,26 @@
                 "type": "string"
               },
               "order": {
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "asc"
+                  },
+                  {
+                    "type": "string",
+                    "const": "desc"
+                  }
                 ]
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1309,7 +1332,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1334,8 +1357,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1360,6 +1383,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "limit": {
@@ -1374,23 +1399,26 @@
                 "type": "string"
               },
               "order": {
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "asc"
+                  },
+                  {
+                    "type": "string",
+                    "const": "desc"
+                  }
                 ]
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1400,7 +1428,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1425,8 +1453,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1451,6 +1479,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "pid": {
@@ -1467,17 +1497,14 @@
             "required": [
               "pid"
             ],
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
-          "adAccountId",
-          "query"
+          "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1487,7 +1514,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1512,8 +1539,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1549,38 +1576,53 @@
                 "description": "Add event details; clock, windows and goal totals are unchanged. count counts summary rows."
               },
               "event_names": {
+                "minItems": 1,
+                "maxItems": 500,
                 "type": "array",
                 "items": {
                   "type": "string",
                   "minLength": 1,
                   "maxLength": 256
                 },
-                "minItems": 1,
-                "maxItems": 500,
                 "description": "Requires include=[attributed_events]. Omit for all; select configured or published account events."
               },
               "attribution_time_basis": {
-                "type": "string",
-                "enum": [
-                  "conversion_time",
-                  "ad_event_time"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "conversion_time"
+                  },
+                  {
+                    "type": "string",
+                    "const": "ad_event_time"
+                  }
                 ]
               },
               "aggregation_level": {
                 "type": "string"
               },
               "time_granularity": {
-                "type": "string",
-                "enum": [
-                  "none",
-                  "daily"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "none"
+                  },
+                  {
+                    "type": "string",
+                    "const": "daily"
+                  }
                 ]
               },
               "breakdown": {
-                "type": "string",
-                "enum": [
-                  "device",
-                  "country"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "device"
+                  },
+                  {
+                    "type": "string",
+                    "const": "country"
+                  }
                 ]
               },
               "time_ranges": {
@@ -1604,11 +1646,19 @@
               "attribution_window_days": {
                 "anyOf": [
                   {
-                    "type": "number",
-                    "enum": [
-                      7,
-                      14,
-                      30
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "const": 7
+                      },
+                      {
+                        "type": "number",
+                        "const": 14
+                      },
+                      {
+                        "type": "number",
+                        "const": 30
+                      }
                     ]
                   },
                   {
@@ -1619,10 +1669,15 @@
               "view_through_attribution_window_days": {
                 "anyOf": [
                   {
-                    "type": "number",
-                    "enum": [
-                      0,
-                      1
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "const": 0
+                      },
+                      {
+                        "type": "number",
+                        "const": 1
+                      }
                     ]
                   },
                   {
@@ -1643,8 +1698,8 @@
           "adAccountId",
           "body"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1654,7 +1709,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1679,8 +1734,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1705,6 +1760,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "include": {
@@ -1726,16 +1783,14 @@
                 "type": "string"
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1745,7 +1800,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1770,8 +1825,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1796,6 +1851,8 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "paginate": {
@@ -1813,16 +1870,14 @@
                 "type": "string"
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1832,7 +1887,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1857,8 +1912,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1891,8 +1946,8 @@
           "adAccountId",
           "feed_id"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1902,7 +1957,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1927,8 +1982,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1968,17 +2023,43 @@
                       "type": "string"
                     },
                     "operator": {
-                      "type": "string",
-                      "enum": [
-                        "in",
-                        "not_in",
-                        "gt",
-                        "gte",
-                        "lt",
-                        "lte",
-                        "contains",
-                        "not_contains",
-                        "starts_with"
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "const": "in"
+                        },
+                        {
+                          "type": "string",
+                          "const": "not_in"
+                        },
+                        {
+                          "type": "string",
+                          "const": "gt"
+                        },
+                        {
+                          "type": "string",
+                          "const": "gte"
+                        },
+                        {
+                          "type": "string",
+                          "const": "lt"
+                        },
+                        {
+                          "type": "string",
+                          "const": "lte"
+                        },
+                        {
+                          "type": "string",
+                          "const": "contains"
+                        },
+                        {
+                          "type": "string",
+                          "const": "not_contains"
+                        },
+                        {
+                          "type": "string",
+                          "const": "starts_with"
+                        }
                       ]
                     },
                     "values": {
@@ -2014,8 +2095,8 @@
           "feed_id",
           "body"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2025,7 +2106,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2050,8 +2131,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2076,22 +2157,32 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "intended_use": {
-                "type": "string",
-                "enum": [
-                  "inclusion",
-                  "exclusion",
-                  "bid_multiplier"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "inclusion"
+                  },
+                  {
+                    "type": "string",
+                    "const": "exclusion"
+                  },
+                  {
+                    "type": "string",
+                    "const": "bid_multiplier"
+                  }
                 ]
               },
               "custom_audience_ids": {
+                "maxItems": 500,
                 "type": "array",
                 "items": {
                   "type": "string"
-                },
-                "maxItems": 500
+                }
               },
               "policy_revision": {
                 "type": "string",
@@ -2114,23 +2205,26 @@
                 "type": "string"
               },
               "order": {
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "asc"
+                  },
+                  {
+                    "type": "string",
+                    "const": "desc"
+                  }
                 ]
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2140,7 +2234,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2165,8 +2259,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2195,6 +2289,8 @@
             "description": "Exact native custom_audience_id. The entity must belong to the configured ad account."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "matched_count_granularity": {
@@ -2202,17 +2298,15 @@
                 "const": "granular"
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId",
           "custom_audience_id"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2222,7 +2316,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2247,8 +2341,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2277,6 +2371,8 @@
             "description": "Exact native custom_audience_id. The entity must belong to the configured ad account."
           },
           "query": {
+            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise.",
+            "default": {},
             "type": "object",
             "properties": {
               "limit": {
@@ -2289,17 +2385,15 @@
                 "minLength": 1
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Documented native query parameters. Each call reads one page unless the tool says otherwise."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId",
           "custom_audience_id"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2309,7 +2403,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2334,8 +2428,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2375,8 +2469,8 @@
           "custom_audience_id",
           "operation_id"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2386,7 +2480,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2411,8 +2505,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2446,8 +2540,8 @@
           "adAccountId",
           "jobId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2457,7 +2551,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2482,8 +2576,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2513,13 +2607,15 @@
             "description": "Native bulk job ID, blkmtnjob_ followed by its identifier, returned when the job was submitted."
           },
           "query": {
+            "description": "Page size from 1 to 100 and, for later pages, the last operation_id of the previous page as after.",
+            "default": {},
             "type": "object",
             "properties": {
               "limit": {
+                "default": 100,
                 "type": "integer",
                 "minimum": 1,
-                "maximum": 100,
-                "default": 100
+                "maximum": 100
               },
               "after": {
                 "type": "string",
@@ -2528,17 +2624,15 @@
                 "pattern": "\\S"
               }
             },
-            "additionalProperties": false,
-            "default": {},
-            "description": "Page size from 1 to 100 and, for later pages, the last operation_id of the previous page as after."
+            "additionalProperties": false
           }
         },
         "required": [
           "adAccountId",
           "jobId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2548,7 +2642,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2573,8 +2667,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2599,16 +2693,17 @@
             "description": "The adacct_ ID configured in OPENAI_ADS_ACCOUNT_ID. The API key is scoped to this one account; another ID is refused."
           },
           "toolName": {
+            "description": "Optional tool name, such as openai_ads_create_campaign, to return only that operation. Omit for all.",
             "type": "string",
-            "pattern": "^openai\\_ads\\_",
-            "description": "Optional tool name, such as openai_ads_create_campaign, to return only that operation. Omit for all."
+            "format": "starts_with",
+            "pattern": "^openai_ads_.*"
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2618,7 +2713,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2643,8 +2738,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2672,8 +2767,8 @@
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2683,7 +2778,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2708,8 +2803,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2736,6 +2831,7 @@
           "mutationId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "The confirmationToken or mutationId returned by a write preview or receipt."
           }
         },
@@ -2743,8 +2839,8 @@
           "adAccountId",
           "mutationId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2754,7 +2850,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2779,8 +2875,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -2827,10 +2923,15 @@
                 "maximum": 4102444800
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  }
                 ]
               },
               "budget": {
@@ -2850,33 +2951,59 @@
                 "additionalProperties": false
               },
               "bidding_type": {
-                "type": "string",
-                "enum": [
-                  "impressions",
-                  "clicks",
-                  "conversions"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "impressions"
+                  },
+                  {
+                    "type": "string",
+                    "const": "clicks"
+                  },
+                  {
+                    "type": "string",
+                    "const": "conversions"
+                  }
                 ]
               },
               "objective": {
-                "type": "string",
-                "enum": [
-                  "reach",
-                  "clicks",
-                  "conversions"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "reach"
+                  },
+                  {
+                    "type": "string",
+                    "const": "clicks"
+                  },
+                  {
+                    "type": "string",
+                    "const": "conversions"
+                  }
                 ]
               },
               "billing_event_type": {
-                "type": "string",
-                "enum": [
-                  "impression",
-                  "click"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "impression"
+                  },
+                  {
+                    "type": "string",
+                    "const": "click"
+                  }
                 ]
               },
               "mode": {
-                "type": "string",
-                "enum": [
-                  "product_feed",
-                  "business_agent"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "product_feed"
+                  },
+                  {
+                    "type": "string",
+                    "const": "business_agent"
+                  }
                 ]
               },
               "product_feed_id": {
@@ -2900,6 +3027,7 @@
                             }
                           },
                           "include": {
+                            "maxItems": 2500,
                             "type": "array",
                             "items": {
                               "type": "object",
@@ -2924,8 +3052,7 @@
                                 "id"
                               ],
                               "additionalProperties": false
-                            },
-                            "maxItems": 2500
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -2940,6 +3067,7 @@
                             }
                           },
                           "include": {
+                            "maxItems": 2500,
                             "type": "array",
                             "items": {
                               "type": "object",
@@ -2964,8 +3092,7 @@
                                 "id"
                               ],
                               "additionalProperties": false
-                            },
-                            "maxItems": 2500
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -3002,14 +3129,31 @@
                               "included": {
                                 "type": "array",
                                 "items": {
-                                  "type": "string",
-                                  "enum": [
-                                    "ios_app",
-                                    "android_app",
-                                    "web",
-                                    "desktop_web",
-                                    "ios_web",
-                                    "android_web"
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "const": "ios_app"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "android_app"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "desktop_web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "ios_web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "android_web"
+                                    }
                                   ]
                                 }
                               }
@@ -3057,17 +3201,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3075,8 +3221,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3086,7 +3232,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3111,8 +3257,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3180,11 +3326,19 @@
                 ]
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused",
-                  "archived"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  },
+                  {
+                    "type": "string",
+                    "const": "archived"
+                  }
                 ]
               },
               "budget": {
@@ -3218,6 +3372,7 @@
                             }
                           },
                           "include": {
+                            "maxItems": 2500,
                             "type": "array",
                             "items": {
                               "type": "object",
@@ -3242,8 +3397,7 @@
                                 "id"
                               ],
                               "additionalProperties": false
-                            },
-                            "maxItems": 2500
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -3258,6 +3412,7 @@
                             }
                           },
                           "include": {
+                            "maxItems": 2500,
                             "type": "array",
                             "items": {
                               "type": "object",
@@ -3282,8 +3437,7 @@
                                 "id"
                               ],
                               "additionalProperties": false
-                            },
-                            "maxItems": 2500
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -3320,14 +3474,31 @@
                               "included": {
                                 "type": "array",
                                 "items": {
-                                  "type": "string",
-                                  "enum": [
-                                    "ios_app",
-                                    "android_app",
-                                    "web",
-                                    "desktop_web",
-                                    "ios_web",
-                                    "android_web"
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "const": "ios_app"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "android_app"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "desktop_web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "ios_web"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "android_web"
+                                    }
                                   ]
                                 }
                               }
@@ -3377,17 +3548,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3396,8 +3569,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3407,7 +3580,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3432,8 +3605,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3464,17 +3637,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3482,8 +3657,8 @@
           "campaign_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3493,7 +3668,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3518,8 +3693,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3550,17 +3725,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3568,8 +3745,8 @@
           "campaign_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3579,7 +3756,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3604,8 +3781,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3636,17 +3813,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3654,8 +3833,8 @@
           "campaign_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3665,7 +3844,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3690,8 +3869,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3731,35 +3910,53 @@
                 "type": "string"
               },
               "context_hints": {
+                "maxItems": 2000,
                 "type": "array",
                 "items": {
                   "type": "string"
-                },
-                "maxItems": 2000
+                }
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  }
                 ]
               },
               "bidding_config": {
                 "type": "object",
                 "properties": {
                   "billing_event_type": {
-                    "type": "string",
-                    "enum": [
-                      "impression",
-                      "click"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "impression"
+                      },
+                      {
+                        "type": "string",
+                        "const": "click"
+                      }
                     ]
                   },
                   "strategy": {
-                    "type": "string",
-                    "enum": [
-                      "fixed_bid",
-                      "maximize_clicks",
-                      "maximize_conversions"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "fixed_bid"
+                      },
+                      {
+                        "type": "string",
+                        "const": "maximize_clicks"
+                      },
+                      {
+                        "type": "string",
+                        "const": "maximize_conversions"
+                      }
                     ]
                   },
                   "max_bid_micros": {
@@ -3812,17 +4009,43 @@
                               "type": "string"
                             },
                             "operator": {
-                              "type": "string",
-                              "enum": [
-                                "in",
-                                "not_in",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "contains",
-                                "not_contains",
-                                "starts_with"
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "const": "in"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "not_in"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "gt"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "gte"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "lt"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "lte"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "contains"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "not_contains"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "starts_with"
+                                }
                               ]
                             },
                             "values": {
@@ -3874,17 +4097,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -3892,8 +4117,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3903,7 +4128,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3928,8 +4153,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3973,36 +4198,57 @@
                 ]
               },
               "context_hints": {
+                "maxItems": 2000,
                 "type": "array",
                 "items": {
                   "type": "string"
-                },
-                "maxItems": 2000
+                }
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused",
-                  "archived"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  },
+                  {
+                    "type": "string",
+                    "const": "archived"
+                  }
                 ]
               },
               "bidding_config": {
                 "type": "object",
                 "properties": {
                   "billing_event_type": {
-                    "type": "string",
-                    "enum": [
-                      "impression",
-                      "click"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "impression"
+                      },
+                      {
+                        "type": "string",
+                        "const": "click"
+                      }
                     ]
                   },
                   "strategy": {
-                    "type": "string",
-                    "enum": [
-                      "fixed_bid",
-                      "maximize_clicks",
-                      "maximize_conversions"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "fixed_bid"
+                      },
+                      {
+                        "type": "string",
+                        "const": "maximize_clicks"
+                      },
+                      {
+                        "type": "string",
+                        "const": "maximize_conversions"
+                      }
                     ]
                   },
                   "max_bid_micros": {
@@ -4055,17 +4301,43 @@
                               "type": "string"
                             },
                             "operator": {
-                              "type": "string",
-                              "enum": [
-                                "in",
-                                "not_in",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "contains",
-                                "not_contains",
-                                "starts_with"
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "const": "in"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "not_in"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "gt"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "gte"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "lt"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "lte"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "contains"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "not_contains"
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "starts_with"
+                                }
                               ]
                             },
                             "values": {
@@ -4118,17 +4390,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4137,8 +4411,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4148,7 +4422,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4173,8 +4447,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4205,17 +4479,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4223,8 +4499,8 @@
           "ad_group_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4234,7 +4510,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4259,8 +4535,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4291,17 +4567,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4309,8 +4587,8 @@
           "ad_group_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4320,7 +4598,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4345,8 +4623,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4377,17 +4655,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4395,8 +4675,8 @@
           "ad_group_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4406,7 +4686,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4431,8 +4711,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4472,10 +4752,15 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "type": "string",
-                    "enum": [
-                      "chat_card",
-                      "product_ad_template"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "chat_card"
+                      },
+                      {
+                        "type": "string",
+                        "const": "product_ad_template"
+                      }
                     ]
                   },
                   "title": {
@@ -4537,10 +4822,15 @@
                 "additionalProperties": false
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  }
                 ]
               },
               "landing_page_configuration": {
@@ -4566,17 +4856,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4584,8 +4876,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4595,7 +4887,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4620,8 +4912,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4662,10 +4954,15 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "type": "string",
-                    "enum": [
-                      "chat_card",
-                      "product_ad_template"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "chat_card"
+                      },
+                      {
+                        "type": "string",
+                        "const": "product_ad_template"
+                      }
                     ]
                   },
                   "title": {
@@ -4727,11 +5024,19 @@
                 "additionalProperties": false
               },
               "status": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "paused",
-                  "archived"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "active"
+                  },
+                  {
+                    "type": "string",
+                    "const": "paused"
+                  },
+                  {
+                    "type": "string",
+                    "const": "archived"
+                  }
                 ]
               },
               "landing_page_configuration": {
@@ -4758,17 +5063,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4777,8 +5084,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4788,7 +5095,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4813,8 +5120,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4845,17 +5152,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4863,8 +5172,8 @@
           "ad_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4874,7 +5183,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4899,8 +5208,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -4931,17 +5240,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -4949,8 +5260,8 @@
           "ad_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -4960,7 +5271,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -4985,8 +5296,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5017,17 +5328,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5035,8 +5348,8 @@
           "ad_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5046,7 +5359,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5071,8 +5384,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5103,17 +5416,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5121,8 +5436,8 @@
           "ad_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5132,7 +5447,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5157,8 +5472,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5203,11 +5518,11 @@
                 "maximum": 9007199254740991
               },
               "source_ids": {
+                "minItems": 1,
                 "type": "array",
                 "items": {
                   "type": "string"
-                },
-                "minItems": 1
+                }
               }
             },
             "required": [
@@ -5222,17 +5537,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5240,8 +5557,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5251,7 +5568,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5276,8 +5593,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5325,17 +5642,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5343,8 +5662,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5354,7 +5673,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5379,8 +5698,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5427,17 +5746,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5445,8 +5766,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5456,7 +5777,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5481,8 +5802,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5528,17 +5849,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5547,8 +5870,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5558,7 +5881,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5583,8 +5906,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5616,6 +5939,7 @@
             "type": "object",
             "properties": {
               "products": {
+                "minItems": 1,
                 "type": "array",
                 "items": {
                   "type": "object",
@@ -5625,6 +5949,7 @@
                       "minLength": 1
                     },
                     "variants": {
+                      "minItems": 1,
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -5673,8 +5998,7 @@
                           "id"
                         ],
                         "additionalProperties": false
-                      },
-                      "minItems": 1
+                      }
                     }
                   },
                   "required": [
@@ -5682,8 +6006,7 @@
                     "variants"
                   ],
                   "additionalProperties": false
-                },
-                "minItems": 1
+                }
               }
             },
             "required": [
@@ -5695,17 +6018,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5714,8 +6039,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5725,7 +6050,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5750,8 +6075,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5782,17 +6107,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -5800,8 +6127,8 @@
           "feed_id",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -5811,7 +6138,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -5836,8 +6163,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -5865,17 +6192,19 @@
             "type": "object",
             "properties": {
               "validate_only": {
-                "type": "boolean",
-                "default": true
+                "default": true,
+                "type": "boolean"
               },
               "partial_failure": {
-                "type": "boolean",
-                "default": true
+                "default": true,
+                "type": "boolean"
               },
               "operations": {
+                "minItems": 1,
+                "maxItems": 1000,
                 "type": "array",
                 "items": {
-                  "anyOf": [
+                  "oneOf": [
                     {
                       "type": "object",
                       "properties": {
@@ -5890,7 +6219,10 @@
                           "const": "campaign.create"
                         },
                         "idempotency_key": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "input": {
                           "type": "object",
@@ -5921,12 +6253,12 @@
                               ]
                             },
                             "status": {
+                              "default": "paused",
                               "type": "string",
                               "enum": [
                                 "active",
                                 "paused"
-                              ],
-                              "default": "paused"
+                              ]
                             },
                             "target_countries": {
                               "type": "array",
@@ -5936,12 +6268,12 @@
                               }
                             },
                             "location_ids": {
+                              "maxItems": 2500,
                               "type": "array",
                               "items": {
                                 "type": "string",
                                 "minLength": 1
-                              },
-                              "maxItems": 2500
+                              }
                             }
                           },
                           "required": [
@@ -5963,7 +6295,10 @@
                       "type": "object",
                       "properties": {
                         "operation_id": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "type": {
                           "type": "string",
@@ -5977,7 +6312,10 @@
                           "type": "object",
                           "properties": {
                             "name": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/input/properties/name"
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 1000,
+                              "pattern": "\\S"
                             },
                             "description": {
                               "type": "string"
@@ -6013,12 +6351,12 @@
                               "maximum": 9007199254740991
                             },
                             "location_ids": {
+                              "maxItems": 2500,
                               "type": "array",
                               "items": {
                                 "type": "string",
                                 "minLength": 1
-                              },
-                              "maxItems": 2500
+                              }
                             }
                           },
                           "additionalProperties": false
@@ -6036,37 +6374,49 @@
                       "type": "object",
                       "properties": {
                         "operation_id": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "type": {
                           "type": "string",
                           "const": "ad_group.create"
                         },
                         "idempotency_key": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "input": {
                           "type": "object",
                           "properties": {
                             "campaign_idempotency_key": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255,
+                              "pattern": "\\S"
                             },
                             "name": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/input/properties/name"
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 1000,
+                              "pattern": "\\S"
                             },
                             "context_hints": {
+                              "maxItems": 2000,
                               "type": "array",
                               "items": {
                                 "type": "string"
-                              },
-                              "maxItems": 2000
+                              }
                             },
                             "exclusion_hints": {
+                              "maxItems": 2000,
                               "type": "array",
                               "items": {
                                 "type": "string"
-                              },
-                              "maxItems": 2000
+                              }
                             },
                             "max_bid_micros": {
                               "type": "integer",
@@ -6074,15 +6424,17 @@
                               "maximum": 9007199254740991
                             },
                             "max_cpm_bid_micros": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/2/properties/input/properties/max_bid_micros"
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 9007199254740991
                             },
                             "status": {
+                              "default": "paused",
                               "type": "string",
                               "enum": [
                                 "active",
                                 "paused"
-                              ],
-                              "default": "paused"
+                              ]
                             }
                           },
                           "required": [
@@ -6104,7 +6456,10 @@
                       "type": "object",
                       "properties": {
                         "operation_id": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "type": {
                           "type": "string",
@@ -6118,25 +6473,45 @@
                           "type": "object",
                           "properties": {
                             "name": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/input/properties/name"
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 1000,
+                              "pattern": "\\S"
                             },
                             "description": {
                               "type": "string"
                             },
                             "status": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/1/properties/input/properties/status"
+                              "type": "string",
+                              "enum": [
+                                "active",
+                                "paused",
+                                "archived"
+                              ]
                             },
                             "context_hints": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/2/properties/input/properties/context_hints"
+                              "maxItems": 2000,
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
                             },
                             "exclusion_hints": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/2/properties/input/properties/exclusion_hints"
+                              "maxItems": 2000,
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
                             },
                             "max_bid_micros": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/2/properties/input/properties/max_bid_micros"
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 9007199254740991
                             },
                             "max_cpm_bid_micros": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/2/properties/input/properties/max_cpm_bid_micros"
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 9007199254740991
                             }
                           },
                           "additionalProperties": false
@@ -6154,23 +6529,35 @@
                       "type": "object",
                       "properties": {
                         "operation_id": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "type": {
                           "type": "string",
                           "const": "ad.create"
                         },
                         "idempotency_key": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "input": {
                           "type": "object",
                           "properties": {
                             "campaign_idempotency_key": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255,
+                              "pattern": "\\S"
                             },
                             "ad_group_idempotency_key": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255,
+                              "pattern": "\\S"
                             },
                             "title": {
                               "type": "string",
@@ -6184,23 +6571,23 @@
                             },
                             "target_url": {
                               "type": "string",
-                              "format": "uri",
-                              "pattern": "^https\\:\\/\\/",
-                              "maxLength": 2048
+                              "maxLength": 2048,
+                              "format": "starts_with",
+                              "pattern": "^https:\\/\\/.*"
                             },
                             "source_image_url": {
                               "type": "string",
-                              "format": "uri",
-                              "pattern": "^https\\:\\/\\/",
-                              "maxLength": 2048
+                              "maxLength": 2048,
+                              "format": "starts_with",
+                              "pattern": "^https:\\/\\/.*"
                             },
                             "status": {
+                              "default": "paused",
                               "type": "string",
                               "enum": [
                                 "active",
                                 "paused"
-                              ],
-                              "default": "paused"
+                              ]
                             }
                           },
                           "required": [
@@ -6226,7 +6613,10 @@
                       "type": "object",
                       "properties": {
                         "operation_id": {
-                          "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/operation_id"
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 255,
+                          "pattern": "\\S"
                         },
                         "type": {
                           "type": "string",
@@ -6240,22 +6630,37 @@
                           "type": "object",
                           "properties": {
                             "name": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/0/properties/input/properties/name"
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 1000,
+                              "pattern": "\\S"
                             },
                             "status": {
-                              "$ref": "#/properties/body/properties/operations/items/anyOf/1/properties/input/properties/status"
+                              "type": "string",
+                              "enum": [
+                                "active",
+                                "paused",
+                                "archived"
+                              ]
                             },
                             "creative": {
                               "type": "object",
                               "properties": {
                                 "title": {
-                                  "$ref": "#/properties/body/properties/operations/items/anyOf/4/properties/input/properties/title"
+                                  "type": "string",
+                                  "minLength": 3,
+                                  "maxLength": 50,
+                                  "pattern": "\\S"
                                 },
                                 "body": {
-                                  "$ref": "#/properties/body/properties/operations/items/anyOf/4/properties/input/properties/body"
+                                  "type": "string",
+                                  "maxLength": 100
                                 },
                                 "target_url": {
-                                  "$ref": "#/properties/body/properties/operations/items/anyOf/4/properties/input/properties/target_url"
+                                  "type": "string",
+                                  "maxLength": 2048,
+                                  "format": "starts_with",
+                                  "pattern": "^https:\\/\\/.*"
                                 },
                                 "file_id": {
                                   "type": "string",
@@ -6283,9 +6688,7 @@
                       "additionalProperties": false
                     }
                   ]
-                },
-                "minItems": 1,
-                "maxItems": 1000
+                }
               }
             },
             "required": [
@@ -6297,17 +6700,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -6315,8 +6720,8 @@
           "body",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6326,7 +6731,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6351,8 +6756,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -6400,17 +6805,19 @@
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -6420,8 +6827,8 @@
           "filename",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6431,7 +6838,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6456,8 +6863,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -6483,25 +6890,27 @@
           },
           "imageUrl": {
             "type": "string",
-            "format": "uri",
-            "pattern": "^https\\:\\/\\/",
             "maxLength": 4000,
+            "format": "starts_with",
+            "pattern": "^https:\\/\\/.*",
             "description": "Exact public HTTPS URL of a PNG, JPEG or WebP image the person approved. OpenAI downloads and validates it; this server never fetches it."
           },
           "requestId": {
             "type": "string",
             "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
             "description": "A UUID you choose for this exact logical change. Keep it for the preview, the confirmation and any later reconciliation. Creations send it as the native Idempotency-Key."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it.",
             "default": false,
-            "description": "false returns a saved preview and changes nothing. true applies only that exact preview after the person explicitly approved it."
+            "type": "boolean"
           },
           "confirmationToken": {
+            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true.",
             "type": "string",
             "format": "uuid",
-            "description": "The confirmationToken returned by the preview of these exact arguments. Required with confirm:true."
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [
@@ -6509,8 +6918,8 @@
           "imageUrl",
           "requestId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6520,7 +6929,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6545,8 +6954,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -6582,9 +6991,9 @@
             "description": "New name, 3 to 1,000 characters. The name is the only thing the call changes."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it.",
             "default": false,
-            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -6592,8 +7001,8 @@
           "campaignId",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6603,7 +7012,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6628,8 +7037,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -6665,9 +7074,9 @@
             "description": "New name, 3 to 1,000 characters. The name is the only thing the call changes."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it.",
             "default": false,
-            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -6675,8 +7084,8 @@
           "adGroupId",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6686,7 +7095,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6711,8 +7120,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -6748,9 +7157,9 @@
             "description": "New name, 3 to 1,000 characters. The name is the only thing the call changes."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it.",
             "default": false,
-            "description": "false returns a preview and changes nothing. true applies the rename after the person approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -6758,8 +7167,8 @@
           "adId",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -6769,7 +7178,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -6794,8 +7203,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
